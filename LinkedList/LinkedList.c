@@ -1,3 +1,7 @@
+/* created By Vipul Dixit
+ github link:
+ https://github.com/vipul-dixit-2004/DSA-in-C/blob/main/LinkedList/LinkedList.c
+*/
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct Node
