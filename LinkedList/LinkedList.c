@@ -15,7 +15,7 @@ struct Node *createNode()
 int menu()
 {
     int ch;
-    printf("\n-----------------------------\n1.CreateList\n2.Append\n3.AddAfter\n4.DeleteNode\n5.DeleteElement\n6.Display LinkedList\n7.Exit\n");
+    printf("\n-----------------------------\n1.CreateList(Works only in turboC because getchar)\n2.Append\n3.Add at beginning\n4.AddAfter\n5.DeleteNode\n6.DeleteElement\n7.Display LinkedList\n8.Exit\n");
     printf("Enter your Choice: ");
     scanf("%d", &ch);
     return ch;
@@ -78,6 +78,18 @@ void addAfter(int pos, int value)
     newNode->next = temp->next;
     temp->next = newNode;
 }
+void insertAtBegin(int value)
+{
+    if (start == NULL)
+    {
+        append(value);
+        return;
+    }
+    node *newNode = createNode();
+    newNode->value = value;
+    newNode->next = start;
+    start = newNode;
+}
 void deleteNode(int pos)
 {
     node *temp = start;
@@ -133,15 +145,30 @@ int main()
             append(value);
             break;
         case 3:
+            printf("Enter Node value to add at beginning: ");
+            scanf("%d", &value);
+            insertAtBegin(value);
+            break;
+        case 4:
             printf("Enter Node location to append after (position value): ");
             scanf("%d %d", &pos, &value);
             addAfter(pos, value);
             break;
+        case 5:
+            printf("Enter the Position you want to delete: \n");
+            scanf("%d", &pos);
+            deleteNode(pos);
+            break;
         case 6:
+            printf("Enter the value you want to delete: \n");
+            scanf("%d", &value);
+            deleteElement(value);
+            break;
+        case 7:
             printf("\n-----------------------------\n");
             print();
             break;
-        case 7:
+        case 8:
             return 0;
         }
         getchar();
