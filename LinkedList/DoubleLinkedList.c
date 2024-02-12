@@ -10,10 +10,21 @@ struct DoubleLinkedList
 typedef struct DoubleLinkedList node;
 node *head;
 node *tail;
+// to create newnode
 node *createNode()
 {
     return (node *)malloc(sizeof(node));
 }
+// menu
+int menu()
+{
+    int ch;
+    printf("\n-----------------------------\n1.CreateList\n2.Append\n3.AddAfter\n4.DeleteNode\n5.DeleteElement\n6.Display LinkedList\n7.Exit\n");
+    printf("Enter your Choice: ");
+    scanf("%d", &ch);
+    return ch;
+}
+
 // will append data at end of list
 void append(int value)
 {
