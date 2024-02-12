@@ -25,13 +25,13 @@ node *createNode()
 void append(int value)
 {
     node *newNode = createNode();
+    newNode->prev = NULL;
+    newNode->next = NULL;
     if (head == NULL)
     {
         head = newNode;
         tail = newNode;
         newNode->value = value;
-        newNode->prev = NULL;
-        newNode->next = NULL;
     }
     else
     {
@@ -39,7 +39,6 @@ void append(int value)
         temp->next = newNode;
         newNode->value = value;
         newNode->prev = temp;
-        newNode->next = NULL;
         tail = newNode;
     }
     return;
@@ -117,13 +116,17 @@ void deleteNode(int pos)
     }
     node *temp = head;
     // node *newNode = createNode();
-    for (int i = 1; i < pos && temp != NULL; i++)
+    for (int i = 1; i < pos - 1 && temp != NULL; i++)
     {
         temp = temp->next;
     }
-    temp->prev->next = temp->next;
-    temp->next->prev = temp->prev;
-    free(temp);
+    if (temp == NULL)
+    {
+        printf("Node Not found");
+        return;
+    }
+    temp->next->next->prev = temp;
+    temp->next = temp->next->next;
 }
 // delete Node by value
 void deleteElement(int value)
