@@ -103,7 +103,7 @@ void deleteNode(int pos)
         return;
     }
     int i = 1;
-    while (i < pos - 1)
+    while ((i < pos - 1) && temp != NULL)
     {
         temp = temp->next;
         i++;
